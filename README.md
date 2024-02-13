@@ -1,53 +1,51 @@
-Repository for CRUD API task in NodeJS course 2022 Q4 at Rolling Scope School.  
+## Installation
 
-
-## Task
-Application written by TypeScript with Node.js.  
-[Task description](https://github.com/AlreadyBored/nodejs-assignments/blob/main/assignments/crud-api/assignment.md)
-
-## Prepare 
-1. Install Node.js
-2. Fork this repository
-3. Clone your newly created repo
-4. Go to folder `crud-api`
-5. To install all dependencies use `npm install`
-
-## How to run 🚀
-* Run the application in development mode:  
+1) Clone this repo
+2) Install dependencies
+```bash
+npm install
 ```
-npm run start:dev
+
+## Checking the functionality
+### Server operations
+1) Start the server `npm run start:dev` for check development mode
+2) After start server open Postman, send requests
+- GET (http://localhost:4000/api/users) to get an array of users;
+  <img width="582" alt="image" src="https://github.com/quasar3c273/crud-api/assets/48333089/69a79a8b-b0f0-481d-94e9-1405427d5b6c">
+- GET (http://localhost:4000/incorrect_url) to get response to an incorrect request;
+  <img width="558" alt="image" src="https://github.com/quasar3c273/crud-api/assets/48333089/cf72f504-a0af-44fb-9da4-81a7fe218162">
+- POST (http://localhost:4000/api/users) to create new user with body in JSON like
+  <img width="688" alt="image" src="https://github.com/quasar3c273/crud-api/assets/48333089/e4060862-6657-4fb6-85a5-fe1d26a97197">
 ```
-* Run the application in production mode:
+  {
+  "username": "Serafim",
+  "age": 5,
+  "hobbies": ["board game"]
+  }
 ```
-npm run start:prod 
-```
-* Run tests scenarios for API:  
-```
-`npm test`  
-```
-## User
-Required fields and data types of User:
+- POST - try sending invalid data
+- copy id of created user;
+- PUT (http://localhost:4000/api/users/{createdUserId}) to change user with body in JSON like
+  <img width="507" alt="image" src="https://github.com/quasar3c273/crud-api/assets/48333089/372f8fec-0508-470a-8f52-6452b62b7f18">
 
 ```
-{
-  username: string,
-  age: number,
-  hobbies: string[]
-}
+  {
+  "username": "Anjelika",
+  "age": 17,
+  "hobbies": ["computer games"]
+  }
 ```
-After creation, each user is assigned a unique id (in uuid format).
-
-## API
-
-Implemented endpoint: `api/users`.
+- PUT try sending invalid data;
+- DELETE (http://localhost:4000/api/users/{createdUserId}) to delete created user;
+  <img width="955" alt="image" src="https://github.com/quasar3c273/crud-api/assets/48333089/7cf8585c-91ad-4776-9c1a-7a01bf49b88f">
 
 
-`GET api/users` - to get all users
+### Production mode
+Command `npm run start:prod` will start the build (production mode). 
+Terminate process and after this you will see the dist folder in the root directory.
 
-`GET api/users/${userId}` - to get user by id (uuid)
+### Testing
+Command `npm run test` run tests;
 
-`POST api/users` - to create record about new user and store it in database
-
-`PUT api/users/${userId}` - to update existing user
-
-`DELETE api/users/${userId}` - to delete existing user from database
+### [Task](https://github.com/AlreadyBored/nodejs-assignments/blob/main/assignments/crud-api/assignment.md)
+### [Cross-check](https://github.com/AlreadyBored/nodejs-assignments/blob/main/assignments/crud-api/score.md)
